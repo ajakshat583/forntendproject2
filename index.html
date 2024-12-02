@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+           .ps{
+            border: 2px solid rgb(27, 37, 13);
+            width: 350px;
+            height: 260px;
+            border-radius: 10px;
+            margin-top: 100px;
+            margin-left: 200px;
+            text-align: center;
+            text-transform: uppercase;
+            background-color: aquamarine;
+        }
+            .ps h1{
+                color: saddlebrown;
+                margin-bottom: 50px;
+            }
+            #password{
+            display: flex;
+            width: 250px;
+            height: 30px;
+            margin-left: 50px;
+            border-radius: 10px;
+            border: inset;
+            text-align: center;
+            color: black;
+        }
+        #passwordgen{
+            margin-top: 10px;
+            width: 150px;
+            height: 40px;
+            border: 2px solid red;
+            border-radius: 20px;
+            font-weight: bold;
+            background-color: indigo;
+            color: white;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 1px;
+        }
+         img{
+            height: 35px;
+            width: 35px;
+            margin-left: 510px;
+            margin-top: -56px;
+            position: absolute;
+         }   
+         #logo{
+            margin-left: 170px;
+            border-radius: 20px;
+            padding-top: 3px;
+         }
+    </style>
+
+</head>
+<body>
+    <div class="ps">
+        <h1>password generator</h1>
+        <input type="text" id="password" placeholder="click to generate password"><br>
+        <img src="images.png" alt="" id="logo">
+        <button id="passwordgen">Generate password</button>
+    </div>
+    <script>
+        let ib=document.getElementById("password")
+        let bt=document.getElementById("passwordgen")
+        let mg=document.getElementById("logo")
+        const pl=7
+        const ucl="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        const lcl="abcdefghijklmnopqrstuvwxyz"
+        const num="0123456789"
+        const spc="!@#$%^&*"
+        const all=ucl+lcl+num+spc
+     
+        bt.addEventListener("click",()=>{
+            let password=""
+            ib.value=""
+            password +=ucl[Math.floor(Math.random()*ucl.length)]
+            password +=lcl[Math.floor(Math.random()*lcl.length)]
+            password +=num[Math.floor(Math.random()*num.length)]
+            password +=spc[Math.floor(Math.random()*spc.length)]
+            while(pl>password.length){
+                password +=all[Math.floor(Math.random()*all.length)]
+            }
+            ib.value=password
+
+        })
+        mg.addEventListener('click',()=>{
+            ib.select()
+            document.execCommand('copy')
+        })
+    </script>
+</body>
+</html>
